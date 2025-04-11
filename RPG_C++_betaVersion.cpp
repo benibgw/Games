@@ -228,7 +228,17 @@ return choice;
 
 int battleSystem(Player& player && Enemie& goblin){
 
+    player.target() = goblin.getName();
+    goblin.target() = player.getName();
 
+    while(player.getHealth() > 0 && goblin.getHealth() > 0){
+
+        int player_choice, goblin_choice;
+
+        cout << "\n---. Escolhas .---\n 1. Atacar.\n 2. Defender.\n\n Digite a opcao que deseja : ";
+        cin >> player_choice;
+
+    }
 
 }
 
