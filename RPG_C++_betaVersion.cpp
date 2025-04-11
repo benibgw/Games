@@ -42,6 +42,7 @@ public :
     int takeDamage(){
 
         int damage;
+        health -= damage;
         cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
 
     return damage;
@@ -63,6 +64,7 @@ public :
             case 1:{
 
                 damage = damage * 0.5;
+                health -= damage;
                 cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
 
             }break;
@@ -88,6 +90,12 @@ public :
     int getStrength(){
 
         return strength;
+
+    }
+
+    int getHealth(){
+
+        return health;
 
     }
 
@@ -132,6 +140,7 @@ public:
     int takeDamage(){
 
         int damage;
+        health -= damage;
         cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
 
     return damage;
@@ -153,6 +162,7 @@ public:
             case 1:{
 
                 damage = damage * 0.5;
+                health -= damage;
                 cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
 
             }break;
@@ -178,6 +188,12 @@ public:
     int getStrength(){
 
         return strength;
+
+    }
+
+    int getHealth(){
+
+        return health;
 
     }
 
@@ -210,7 +226,7 @@ int menuMain(){
 return choice;
 }
 
-int battleSystem(){
+int battleSystem(Player& player && Enemie& goblin){
 
 
 
