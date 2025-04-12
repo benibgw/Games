@@ -226,10 +226,10 @@ int menuMain(){
 return choice;
 }
 
-int battleSystem(Player& player && Enemie& goblin){
+int battleSystem(Player& player, Enemie& goblin){
 
-    player.target() = goblin.getName();
-    goblin.target() = player.getName();
+    player.target = goblin.getName();
+    goblin.target = player.getName();
 
     while(player.getHealth() > 0 && goblin.getHealth() > 0){
 
@@ -238,6 +238,37 @@ int battleSystem(Player& player && Enemie& goblin){
         cout << "\n---. Escolhas .---\n 1. Atacar.\n 2. Defender.\n\n Digite a opcao que deseja : ";
         cin >> player_choice;
 
+        goblin_choice = rand() % 2;
+
+        system("cls");
+
+        playerAtack = player.getStrength();
+        goblinAtack = goblin.getStrength();
+
+        if(player_choice == 1 && goblin_choice == 0){
+
+            player.atack();
+            goblin.atack();
+            player.takeDamage(goblinAtack);
+            goblin.takeDamage(playerAtack);
+
+        }else if(player_choice == 1 && goblin_choice == 1){
+
+            player.atack();
+            goblin.defend(playerAtack);
+
+        }else if(player_choice == 2 && goblin_choice == 0){
+
+            goblin.atack();
+            player.defend(goblinAtack);
+
+        }else if(player_choice == 2 && goblin_choice == 1){
+
+            cout << "Ninguem atacou nem levou dano.";
+
+        }
+
+    break;
     }
 
 }
@@ -251,7 +282,17 @@ int main(){
     getchar();
     system("cls");
 
+    while(menuMain() != 2){
+
     menuMain();
+
+    if(menuMain() == 1){
+
+        battleSystem();
+
+    }
+
+}
 
 return 0;
 }
