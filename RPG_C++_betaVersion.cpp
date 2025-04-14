@@ -3,296 +3,211 @@
 #include <string>
 using namespace std;
 
-class Enemie{
-
-private :
-
-    string name;
-    int health;
-    int strength;
-    int resistance;
-
-public :
-
-    string target;
-
-    Enemie (string n, int h, int s, int r){
-
-        name = n,
-        health = h,
-        strength = s;
-        resistance = r;
-
-    }
-
-    int status(){
-
-        cout << "\nNome : " << name << "\nVida : " << health << "\nForca : " << strength << "\nResistencia : " << resistance;
-
-    return 0;
-    }
-
-    int atack(){
-
-        cout << name << " atacou " << target << " com " << strength << " de forca ";
-
-    return strength;
-    }
-
-    int takeDamage(){
-
-        int damage;
-        health -= damage;
-        cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
-
-    return damage;
-    }
-
-    int defend(){
-
-        int damage;
-        int defend = rand() %3;
-
-        switch(defend){
-
-            case 0:{
-
-                takeDamage();
-
-            }break;
-
-            case 1:{
-
-                damage = damage * 0.5;
-                health -= damage;
-                cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
-
-            }break;
-
-            case 2:{
-
-                damage = 0;
-                cout << name << " nao levou dano.";
-
-            }break;
-
-        }
-
-    return damage;
-    }
-
-    string getName(){
-
-        return name;
-
-    }
-
-    int getStrength(){
-
-        return strength;
-
-    }
-
-    int getHealth(){
-
-        return health;
-
-    }
-
-};
-
-class Player{
-
-private :
-
+class Enemie {
+private:
     string name;
     int health;
     int strength;
     int resistance;
 
 public:
-
     string target;
 
-    Player(string n, int h, int s, int r){
-
+    Enemie(string n, int h, int s, int r) {
         name = n;
         health = h;
         strength = s;
         resistance = r;
-
     }
 
-    int status(){
-
+    void status() {
         cout << "\nNome : " << name << "\nVida : " << health << "\nForca : " << strength << "\nResistencia : " << resistance;
-
-    return 0;
     }
 
-    int atack(){
-
-        cout << name << " atacou " << target << " com " << strength << " de forca ";
-
-    return strength;
+    int atack() {
+        cout << name << " atacou " << target << " com " << strength << " de forca.";
+        return strength;
     }
 
-    int takeDamage(){
-
-        int damage;
+    void takeDamage(int damage) {
         health -= damage;
-        cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
-
-    return damage;
+        cout << "\n" << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health << ".";
     }
 
-    int defend(){
+    void defend(int damage) {
+        int defend = rand() % 3;
 
-        int damage;
-        int defend = rand() %3;
+        switch (defend) {
+            case 0: {
+                takeDamage(damage);
+            } break;
 
-        switch(defend){
-
-            case 0:{
-
-                takeDamage();
-
-            }break;
-
-            case 1:{
-
+            case 1: {
                 damage = damage * 0.5;
                 health -= damage;
-                cout << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health;
+                cout << "\n" << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health << ".";
+            } break;
 
-            }break;
-
-            case 2:{
-
+            case 2: {
                 damage = 0;
-                cout << name << " nao levou dano.";
-
-            }break;
-
+                cout << "\n" << name << " nao levou dano.";
+            } break;
         }
-
-    return damage;
     }
 
-    string getName(){
-
+    string getName() {
         return name;
-
     }
 
-    int getStrength(){
-
+    int getStrength() {
         return strength;
-
     }
 
-    int getHealth(){
-
+    int getHealth() {
         return health;
-
     }
-
 };
 
-int start(){
+class Player {
+private:
+    string name;
+    int health;
+    int strength;
+    int resistance;
 
+public:
+    string target;
+
+    Player(string n, int h, int s, int r) {
+        name = n;
+        health = h;
+        strength = s;
+        resistance = r;
+    }
+
+    void status() {
+        cout << "\nNome : " << name << "\nVida : " << health << "\nForca : " << strength << "\nResistencia : " << resistance;
+    }
+
+    int atack() {
+        cout << name << " atacou " << target << " com " << strength << " de forca.";
+        return strength;
+    }
+
+    void takeDamage(int damage) {
+        health -= damage;
+        cout << "\n" << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health << ".";
+    }
+
+    void defend(int damage) {
+        int defend = rand() % 3;
+
+        switch (defend) {
+            case 0: {
+                takeDamage(damage);
+            } break;
+
+            case 1: {
+                damage = damage * 0.5;
+                health -= damage;
+                cout << "\n" << name << " levou " << damage << " de dano de " << target << ". Vida restante : " << health << ".";
+            } break;
+
+            case 2: {
+                damage = 0;
+                cout << "\n" << name << " nao levou dano.";
+            } break;
+        }
+    }
+
+    string getName() {
+        return name;
+    }
+
+    int getStrength() {
+        return strength;
+    }
+
+    int getHealth() {
+        return health;
+    }
+};
+
+Player start() {
     string name;
 
     cout << "\n---. Ola, bem vindo ao Goblin Slayer .---\n\n Para prosseguir digite o nome do seu personagem : ";
     cin >> name;
 
     Player player(name, 100, 20, 10);
-    Enemie goblin("Goblin", 75, 15, 8);
-
     system("cls");
 
-    cout << player.status();
-
-return 0;
+    player.status();
+    return player;
 }
 
-int menuMain(){
-
+int menuMain() {
     int choice;
     cout << "\n---. Menu .---\n 1. Batalha.\n 2. Sair.";
     cout << "\n\n Digite a opcao que deseja : ";
     cin >> choice;
 
-return choice;
+    return choice;
 }
 
-int battleSystem(Player& player, Enemie& goblin){
-
+void battleSystem(Player& player, Enemie& goblin) {
     player.target = goblin.getName();
     goblin.target = player.getName();
 
-    while(player.getHealth() > 0 && goblin.getHealth() > 0){
-
+    while (player.getHealth() > 0 && goblin.getHealth() > 0) {
         int player_choice, goblin_choice;
 
-        cout << "\n---. Escolhas .---\n 1. Atacar.\n 2. Defender.\n\n Digite a opcao que deseja : ";
+        cout << "\n---. Escolhas .---\n";
+        cout << " 1. Atacar.\n";
+        cout << " 2. Defender.\n\n";
+        cout << " Digite a opcao que deseja : ";
         cin >> player_choice;
 
         goblin_choice = rand() % 2;
 
-        system("cls");
-
-        playerAtack = player.getStrength();
-        goblinAtack = goblin.getStrength();
-
-        if(player_choice == 1 && goblin_choice == 0){
-
-            player.atack();
-            goblin.atack();
-            player.takeDamage(goblinAtack);
-            goblin.takeDamage(playerAtack);
-
-        }else if(player_choice == 1 && goblin_choice == 1){
-
-            player.atack();
-            goblin.defend(playerAtack);
-
-        }else if(player_choice == 2 && goblin_choice == 0){
-
-            goblin.atack();
-            player.defend(goblinAtack);
-
-        }else if(player_choice == 2 && goblin_choice == 1){
-
-            cout << "Ninguem atacou nem levou dano.";
-
+        if (player_choice == 1 && goblin_choice == 0) {
+            int damage = player.atack();
+            goblin.takeDamage(damage);
+        } else if (player_choice == 1 && goblin_choice == 1) {
+            int damage = player.atack();
+            goblin.defend(damage);
+        } else if (player_choice == 2 && goblin_choice == 0) {
+            int damage = goblin.atack();
+            player.defend(damage);
+        } else if (player_choice == 2 && goblin_choice == 1) {
+            player.defend(0);
+            goblin.defend(0);
+        } else {
+            cout << "Opcao invalida.\n";
         }
-
-    break;
     }
-
 }
 
-int main(){
-
-    start();
+int main() {
+    Player player = start();
+    Enemie goblin("Goblin", 75, 15, 8);
 
     cout << "\n\n---. Pressione ENTER para prosseguir .---";
     getchar();
     getchar();
     system("cls");
 
-    while(menuMain() != 2){
-
-    menuMain();
-
-    if(menuMain() == 1){
-
-        battleSystem();
-
+    int choice;
+    while ((choice = menuMain()) != 2) {
+        system("cls");
+        switch (choice) {
+            case 1:
+                battleSystem(player, goblin);
+                break;
+            default:
+                break;
+        }
     }
 
-}
-
-return 0;
+    return 0;
 }
