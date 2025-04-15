@@ -167,7 +167,8 @@ void battleSystem(Player& player, Enemie& goblin) {
         cout << " 2. Defender.\n\n";
         cout << " Digite a opcao que deseja : ";
         cin >> player_choice;
-
+        
+        system("cls");
         goblin_choice = rand() % 2;
 
         if (player_choice == 1 && goblin_choice == 0) {
@@ -185,6 +186,14 @@ void battleSystem(Player& player, Enemie& goblin) {
         } else {
             cout << "Opcao invalida.\n";
         }
+    }
+
+    if(goblin.getHealth() <= 0) {
+        cout << "\n\n" << player.getName() << " venceu a batalha contra " << goblin.getName() << "!";
+    } else if(player.getHealth() <= 0) {
+        cout << "\n\n" << goblin.getName() << " venceu a batalha contra " << player.getName() << "!";
+    } else {
+        cout << "\n\nBatalha encerrada.";
     }
 }
 
