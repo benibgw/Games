@@ -1,1 +1,1 @@
-RPG game, C and C++ versions :)
+Terinal RPG game, C++ version :)
