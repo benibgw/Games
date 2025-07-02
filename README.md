@@ -1,1 +1,1 @@
-Terminal RPG game, C++ version :)
+Console RPG game, C++ version :)
